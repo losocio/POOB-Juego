@@ -15,6 +15,7 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 	private JButton b[] = new JButton[4];
 	private JButton m[] = new JButton[8];
 	private JTextField estadistica= new JTextField();
+	JPanel caja= new JPanel();
 	private String personaje[] = {"Elemental","Elfo","Enano","Humano","Orco"};
 	private String dificultad[] = {"Facil","Normal","Dificil"};
 	private int x=0;
@@ -27,10 +28,13 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 	private int ataque_base=0;
 	private int defensa_base=0;
 	private int velocidad_base=0;
+	private int vida_total=0;
+	private int ataque_total=0;
+	private int defensa_total=0;
+	private int velocidad_total=0;
 	private int estadisticas=0;
 	
 	public seleccion_personaje() {
-		JPanel caja= new JPanel();
 		for(int x=0;x<7;x++) {
 			linea[x]= new JTextField();
 		}
@@ -89,10 +93,7 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 
 
 	public void actionPerformed(ActionEvent e) {
-		String vida_total="";
-		String ataque_total="";
-		String defensa_total="";
-		String velocidad_total="";
+		
 		String estadisticas_total="";
 		JButton clickedButton= (JButton) e.getSource();
 		String buttonText = clickedButton.getText();
@@ -171,7 +172,6 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 			velocidad=0;
 		}
 		
-		
 		if (personaje[y]=="Elemental") {
 			vida_base=7;
 			ataque_base=19;
@@ -212,19 +212,53 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 			estadisticas=20;
 		}
 		
-		vida_total=vida_base+vida+"";
-		ataque_total=ataque_base+ataque+"";
-		defensa_total=defensa_base+defensa+"";
-		velocidad_total=velocidad_base+velocidad+"";
+		if (buttonText=="Enter") {
+			if(0==(estadisticas-vida-ataque-defensa-velocidad)) {
+				
+				caja.setVisible(false);
+				
+			}
+		}
+		
+		vida_total=vida_base+vida;
+		ataque_total=ataque_base+ataque;
+		defensa_total=defensa_base+defensa;
+		velocidad_total=velocidad_base+velocidad;
 		estadisticas_total=estadisticas-vida-ataque-defensa-velocidad+"";
 		
 		linea[0].setText(dificultad[x]);
 		linea[1].setText(personaje[y]);
-		linea[2].setText(vida_total);
-		linea[3].setText(ataque_total);
-		linea[4].setText(defensa_total);
-		linea[5].setText(velocidad_total);
+		linea[2].setText(vida_total+"");
+		linea[3].setText(ataque_total+"");
+		linea[4].setText(defensa_total+"");
+		linea[5].setText(velocidad_total+"");
 		estadistica.setText(estadisticas_total);
+	}
+
+
+
+	public String[] getPersonaje() {
+		return personaje;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public int getVida_total() {
+		return vida_total;
+	}
+
+	public int getAtaque_total() {
+		return ataque_total;
+	}
+
+	public int getDefensa_total() {
+		return defensa_total;
+	}
+
+	public int getVelocidad_total() {
+		return velocidad_total;
 	}
 	
 }

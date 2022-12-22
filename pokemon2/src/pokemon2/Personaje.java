@@ -1,6 +1,6 @@
 package pokemon2;
 
-public abstract class Personaje {
+public abstract class Personaje extends seleccion_personaje{
 
 	private int vida;
 	private int ataque;
@@ -8,12 +8,12 @@ public abstract class Personaje {
 	private int velocidad;
 	private String raza;
 	
-	public Personaje(String raza, int vida, int ataque, int def, int velocidad) {
-		this.raza=raza;
-		this.vida=vida;
-		this.ataque=ataque;
-		this.def=def;
-		this.velocidad=velocidad;
+	public Personaje() {
+		this.raza=getPersonaje()[getY()];
+		this.vida=getVida_total();
+		this.ataque=getAtaque_total();
+		this.def=getDefensa_total();
+		this.velocidad=getVelocidad_total();
 	}
 	
 	
