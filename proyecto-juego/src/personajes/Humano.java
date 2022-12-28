@@ -1,4 +1,4 @@
-package pokemon;
+package personajes;
 
 public class Humano extends Personaje {
 

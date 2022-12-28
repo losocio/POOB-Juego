@@ -1,4 +1,4 @@
-package pokemon;
+package personajes;
 
 public class Enano extends Personaje{
 	
