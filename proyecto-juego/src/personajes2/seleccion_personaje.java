@@ -57,7 +57,7 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 		JButton reset= new JButton("Reset");
 		setSize(500,500);
 		setLocation(700,200);
-		setTitle("estadisticas");
+		setTitle("Estadisticas");
 		caja.setLayout(new GridLayout(7,3));
 		for(int x=0;x<2;x++) {
 			caja.add(b[2+x]);
