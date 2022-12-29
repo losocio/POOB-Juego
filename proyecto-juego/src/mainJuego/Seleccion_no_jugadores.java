@@ -14,7 +14,7 @@ public class Seleccion_no_jugadores extends JFrame implements ActionListener{
 	
 	private int numeroJugadores = 0;
 
-	JPanel panel= new JPanel();
+	private JPanel panel= new JPanel();
 	
 	private JLabel texto;
 	
@@ -57,6 +57,9 @@ public class Seleccion_no_jugadores extends JFrame implements ActionListener{
 			dispose();
 			//panel.setVisible(false);
 			//setVisible(false);
+			
+			Seleccion_no_CPU seleccion2= new Seleccion_no_CPU(numeroJugadores);
+			seleccion2.setVisible(true);
 		}
 		
 		if (source==comboBox) {

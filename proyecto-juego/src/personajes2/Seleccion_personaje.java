@@ -7,42 +7,47 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.JLabel;
 
-public class seleccion_personaje extends JFrame implements ActionListener {
+public class Seleccion_personaje extends JFrame implements ActionListener {
 	
-	private JTextField linea[] = new JTextField[7];
+	private JLabel linea[] = new JLabel[7];
 	private JButton b[] = new JButton[4];
 	private JButton m[] = new JButton[8];
-	private JTextField estadistica= new JTextField();
-	JPanel caja= new JPanel();
+	private JLabel estadistica= new JLabel();
+	private JPanel caja= new JPanel(); //TODO anyadi private
+	
 	private String personaje[] = {"Elemental","Elfo","Enano","Humano","Orco"};
 	private String dificultad[] = {"Facil","Normal","Dificil"};
-	private int x=0;
-	private int y=0;
+	
+	private int dif=0;
+	private int raz=0;
+	
 	private int vida=0;
 	private int ataque=0;
 	private int defensa=0;
 	private int velocidad=0;
+	
 	private int vida_base=0;
 	private int ataque_base=0;
 	private int defensa_base=0;
 	private int velocidad_base=0;
+	
 	private int vida_total=0;
 	private int ataque_total=0;
 	private int defensa_total=0;
 	private int velocidad_total=0;
+	
 	private int estadisticas=0;
 	
-	public seleccion_personaje() {
+	public Seleccion_personaje() {
 		for(int x=0;x<7;x++) {
-			linea[x]= new JTextField();
+			linea[x]= new JLabel();
 		}
-			b[0]= new JButton("->");
-			b[2]= new JButton("<-");
-			b[1]= new JButton("siguiente");
-			b[3]= new JButton("anterior");
-		
+		b[0]= new JButton("->");
+		b[2]= new JButton("<-");
+		b[1]= new JButton("siguiente");
+		b[3]= new JButton("anterior");		
 		
 		m[0]= new JButton("vida +");
 		m[4]= new JButton("vida -");
@@ -100,32 +105,32 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 		
 		
 		if (buttonText=="<-") {
-			if (x==0) {
-				x=2;
+			if (dif==0) {
+				dif=2;
 			}else {
-				x--;
+				dif--;
 			}
 		}
 		if (buttonText=="->") {
-			if (x==2) {
-				x=0;
+			if (dif==2) {
+				dif=0;
 			}else {
-				x++;
+				dif++;
 			}
 		}
 		
 		if (buttonText=="anterior") {
-			if (y==0) {
-				y=4;
+			if (raz==0) {
+				raz=4;
 			}else {
-				y--;
+				raz--;
 			}
 		}
 		if (buttonText=="siguiente") {
-			if (y==4) {
-				y=0;
+			if (raz==4) {
+				raz=0;
 			}else {
-				y++;
+				raz++;
 			}
 		}
 		
@@ -172,43 +177,43 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 			velocidad=0;
 		}
 		
-		if (personaje[y]=="Elemental") {
+		if (personaje[raz]=="Elemental") {
 			vida_base=7;
 			ataque_base=19;
 			defensa_base=7;
 			velocidad_base=7;
 		}
-		if (personaje[y]=="Elfo") {
+		if (personaje[raz]=="Elfo") {
 			vida_base=7;
 			ataque_base=7;
 			defensa_base=7;
 			velocidad_base=19;
 		}
-		if (personaje[y]=="Enano") {
+		if (personaje[raz]=="Enano") {
 			vida_base=7;
 			ataque_base=7;
 			defensa_base=19;
 			velocidad_base=7;
 		}
-		if (personaje[y]=="Humano") {
+		if (personaje[raz]=="Humano") {
 			vida_base=10;
 			ataque_base=10;
 			defensa_base=10;
 			velocidad_base=10;
 		}
-		if (personaje[y]=="Orco") {
+		if (personaje[raz]=="Orco") {
 			vida_base=19;
 			ataque_base=7;
 			defensa_base=7;
 			velocidad_base=7;
 		}
-		if (dificultad[x]=="Facil") {
+		if (dificultad[dif]=="Facil") {
 			estadisticas=50;
 		}
-		if (dificultad[x]=="Normal") {
+		if (dificultad[dif]=="Normal") {
 			estadisticas=35;
 		}
-		if (dificultad[x]=="Dificil") {
+		if (dificultad[dif]=="Dificil") {
 			estadisticas=20;
 		}
 		
@@ -216,7 +221,7 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 			if(0==(estadisticas-vida-ataque-defensa-velocidad)) {
 				
 				caja.setVisible(false);
-				
+				dispose();
 			}
 		}
 		
@@ -226,8 +231,8 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 		velocidad_total=velocidad_base+velocidad;
 		estadisticas_total=estadisticas-vida-ataque-defensa-velocidad+"";
 		
-		linea[0].setText(dificultad[x]);
-		linea[1].setText(personaje[y]);
+		linea[0].setText(dificultad[dif]);
+		linea[1].setText(personaje[raz]);
 		linea[2].setText(vida_total+"");
 		linea[3].setText(ataque_total+"");
 		linea[4].setText(defensa_total+"");
@@ -241,8 +246,8 @@ public class seleccion_personaje extends JFrame implements ActionListener {
 		return personaje;
 	}
 
-	public int getY() {
-		return y;
+	public int getRaz() {
+		return raz;
 	}
 
 	public int getVida_total() {

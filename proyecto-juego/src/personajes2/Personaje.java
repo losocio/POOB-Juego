@@ -1,6 +1,6 @@
 package personajes2;
 
-public abstract class Personaje extends seleccion_personaje{
+public abstract class Personaje extends Seleccion_personaje{
 
 	private int vida;
 	private int ataque;
@@ -9,7 +9,7 @@ public abstract class Personaje extends seleccion_personaje{
 	private String raza;
 	
 	public Personaje() {
-		this.raza=getPersonaje()[getY()];
+		this.raza=getPersonaje()[getRaz()];
 		this.vida=getVida_total();
 		this.ataque=getAtaque_total();
 		this.def=getDefensa_total();

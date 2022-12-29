@@ -1,8 +1,8 @@
 package personajes;
 
 public class Orco extends Personaje{
-	public Orco(int vida, int ataque, int def, int velocidad) {
+	public Orco(int vida, int ataque, int defensa, int velocidad) {
 
-		super("Orco", vida, ataque, def, velocidad);
+		super("Orco", vida, ataque, defensa, velocidad);
 	}
 }

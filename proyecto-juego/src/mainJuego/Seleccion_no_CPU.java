@@ -16,7 +16,7 @@ public class Seleccion_no_CPU extends JFrame implements ActionListener{
 	
 	private int numeroJugadoresVerdaderos = 1;
 	
-	JPanel panel= new JPanel();
+	private JPanel panel= new JPanel();
 	
 	private JLabel texto;
 	

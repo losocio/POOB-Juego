@@ -2,9 +2,9 @@ package personajes;
 
 public class Elfo extends Personaje{
 
-	public Elfo(int vida, int ataque, int def, int velocidad) {
+	public Elfo(int vida, int ataque, int defensa, int velocidad) {
 		
-		super("Arquero", vida, ataque, def, velocidad);
+		super("Elfo", vida, ataque, defensa, velocidad);
 	}
 	
 }
