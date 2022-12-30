@@ -37,6 +37,9 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 	private int velocidad_total=0;
 	
 	private int estadisticas=0;
+	private int estadisticas_total = 50;
+	
+	private Personaje jugador;
 	
 	public Seleccion_personaje() {
 		
@@ -64,10 +67,10 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 		setTitle("Estadisticas");
 		caja.setLayout(new GridLayout(7,3));
 		
-		for(int x=0; x<6; x+=2) {
-			caja.add(boton[x]);
+		for(int x=0; x<6; x++) {
+			caja.add(boton[2*x]);
 			caja.add(dato[x]);
-			caja.add(boton[x+1]);
+			caja.add(boton[2*x+1]);
 		}
 		
 		caja.add(dato[6]);
@@ -90,9 +93,8 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		
-		String estadisticas_total="";
-		JButton clickedButton= (JButton) e.getSource();
+
+		JButton clickedButton = (JButton) e.getSource();
 		String buttonText = clickedButton.getText();
 		
 		switch(buttonText) {
@@ -102,6 +104,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				}else {
 					dif--;
 				}
+				break;
 				
 			case "->":
 				if (dif==2) {
@@ -109,6 +112,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				}else {
 					dif++;
 				}
+				break;
 				
 			case " <- ":
 				if (raz==0) {
@@ -116,6 +120,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				}else {
 					raz--;
 				}
+				break;
 				
 			case " -> ":
 				if (raz==4) {
@@ -123,63 +128,85 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				}else {
 					raz++;
 				}
+				break;
 				
 			case "Vida -":
 				if(vida>0) {
 					vida--;
 				}
+				break;
 				
-			case "Vida +": vida++;
+			case "Vida +":
+				if(estadisticas_total>0) {
+					vida++;
+				}
+				break;
 				
 			case "Ataque -":
 				if(ataque>0) {
 					ataque--;
 				}
+				break;
 				
-			case "Ataque +": ataque++;
+			case "Ataque +": 
+				if(estadisticas_total>0) {
+					ataque++;
+				}
+				break;
 				
 			case "Defensa -":
 				if(defensa>0) {
 					defensa--;
 				}
+				break;
 				
-			case "Defensa +": defensa++;
+			case "Defensa +": 
+				if(estadisticas_total>0) {
+					defensa++;
+				}
+				break;
 				
 			case "Velocidad -":
 				if(velocidad>0) {
 					velocidad--;
 				}
+				break;
 				
-			case "Velocidad +": velocidad++;
+			case "Velocidad +": 
+				if(estadisticas_total>0) {
+					velocidad++;
+				}
+				break;
 				
 			case "Resetear":
 				vida=0;
 				ataque=0;
 				defensa=0;
 				velocidad=0;
+				break;
 				
 			case "Siguiente":
 				if((estadisticas-vida-ataque-defensa-velocidad) == 0) {
-
 					switch(personaje[raz]) {
 						case "Elemental":
-							Elemental elemental = new Elemental(vida_total, ataque_total, defensa_total, velocidad_total);
-							
+							jugador = new Elemental(vida_total, ataque_total, defensa_total, velocidad_total);
+									
 						case "Elfo":
-							Elfo elfo = new Elfo(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Elfo(vida_total, ataque_total, defensa_total, velocidad_total);
 							
 						case "Enano":
-							Enano enano = new Enano(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Enano(vida_total, ataque_total, defensa_total, velocidad_total);
 							
 						case "Humano":
-							Humano humano = new Humano(vida_total, ataque_total, defensa_total, velocidad_total);
-							
+							jugador = new Humano(vida_total, ataque_total, defensa_total, velocidad_total);
+	
 						case "Orco":
-							Orco orco = new Orco(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Orco(vida_total, ataque_total, defensa_total, velocidad_total);
 					}
 					
 					dispose();
 				}
+				break;
 		}
 		
 		switch(personaje[raz]) {
@@ -188,38 +215,49 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				ataque_base=19;
 				defensa_base=7;
 				velocidad_base=7;
+				break;
 				
 			case "Elfo":
 				vida_base=7;
 				ataque_base=7;
 				defensa_base=7;
 				velocidad_base=19;
+				break;
 				
 			case "Enano":
 				vida_base=7;
 				ataque_base=7;
 				defensa_base=19;
 				velocidad_base=7;
+				break;
 				
 			case "Humano":
 				vida_base=10;
 				ataque_base=10;
 				defensa_base=10;
 				velocidad_base=10;
+				break;
 				
 			case "Orco":
 				vida_base=19;
 				ataque_base=7;
 				defensa_base=7;
 				velocidad_base=7;
+				break;
 		}
 		
 		switch(dificultad[dif]) {
-			case "Facil": estadisticas=50;
+			case "Facil": 
+				estadisticas=50;
+				break;
 				
-			case "Normal": estadisticas=35;
+			case "Normal": 
+				estadisticas=35;
+				break;
 				
-			case "Dificil": estadisticas=20;
+			case "Dificil": 
+				estadisticas=20;
+				break;
 		}
 		
 		//TODO puede que haya que poner el boton Siguiente aqui
@@ -228,7 +266,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 		ataque_total=ataque_base+ataque;
 		defensa_total=defensa_base+defensa;
 		velocidad_total=velocidad_base+velocidad;
-		estadisticas_total=estadisticas-vida-ataque-defensa-velocidad+"";
+		estadisticas_total=estadisticas-vida-ataque-defensa-velocidad;
 		
 		dato[0].setText(dificultad[dif]);
 		dato[1].setText(personaje[raz]);
@@ -236,17 +274,15 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 		dato[3].setText(ataque_total+"");
 		dato[4].setText(defensa_total+"");
 		dato[5].setText(velocidad_total+"");
-		dato[6].setText(estadisticas_total);
+		dato[6].setText(estadisticas_total+"");
 	}
 
-
-
-	public String[] getPersonaje() {
-		return personaje;
+	public Personaje getJugador() {
+		return jugador;
 	}
-
-	public int getRaz() {
-		return raz;
+	/*
+	public String getRaza() {
+		return personaje[raz];
 	}
 
 	public int getVida_total() {
@@ -264,5 +300,5 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 	public int getVelocidad_total() {
 		return velocidad_total;
 	}
-	
+	*/
 }

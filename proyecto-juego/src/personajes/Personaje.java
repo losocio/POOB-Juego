@@ -19,45 +19,42 @@ public abstract class Personaje {
 	public int getVida() {
 		return vida;
 	}
-
-	public void setVida(int vida) {
-		this.vida = vida;
-	}
-
+	
 	public int getAtaque() {
 		return ataque;
+	}
+	
+	public int getDefensa() {
+		return defensa;
+	}
+	
+	public int getVelocidad() {
+		return velocidad;
+	}
+	
+	public String getRaza() {
+		return raza;
+	}
+	
+	/*
+	public void setVida(int vida) {
+		this.vida = vida;
 	}
 
 	public void setAtaque(int ataque) {
 		this.ataque = ataque;
 	}
 
-	public int getDefensa() {
-		return defensa;
-	}
-
 	public void setDefensa(int defensa) {
 		this.defensa = defensa;
-	}
-
-	public int getVelocidad() {
-		return velocidad;
 	}
 
 	public void setVelocidad(int velocidad) {
 		this.velocidad = velocidad;
 	}
 
-	public String getRaza() {
-		return raza;
-	}
-
 	public void setRaza(String raza) {
 		this.raza = raza;
 	}
-
-	
-
-	
-	
+	*/
 }

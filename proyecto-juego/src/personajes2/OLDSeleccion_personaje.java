@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-public class Seleccion_personaje extends JFrame implements ActionListener {
+public class OLDSeleccion_personaje extends JFrame implements ActionListener {
 	
 	private JLabel linea[] = new JLabel[7];
 	private JButton b[] = new JButton[4];
@@ -40,7 +40,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 	
 	private int estadisticas=0;
 	
-	public Seleccion_personaje() {
+	public OLDSeleccion_personaje() {
 		for(int x=0;x<7;x++) {
 			linea[x]= new JLabel();
 		}

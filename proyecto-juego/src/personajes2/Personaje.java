@@ -1,6 +1,6 @@
 package personajes2;
 
-public abstract class Personaje extends Seleccion_personaje{
+public abstract class Personaje extends OLDSeleccion_personaje{
 
 	private int vida;
 	private int ataque;
