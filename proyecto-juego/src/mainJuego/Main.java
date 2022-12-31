@@ -30,10 +30,11 @@ public class Main {
 			Seleccion_personaje seleccion_personaje = new Seleccion_personaje();
 			seleccion_personaje.setVisible(true);
 			
-			while(seleccion_personaje.getJugador() == null) {}
+			while(seleccion_personaje.getJugador() == null) {
+				System.out.println("");
+			}
 			jugadoresVerdaderos[i] = seleccion_personaje.getJugador();
 			
-
 			i++;
 		}
 	}
