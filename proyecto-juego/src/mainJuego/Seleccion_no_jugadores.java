@@ -13,6 +13,7 @@ import javax.swing.JComboBox;
 public class Seleccion_no_jugadores extends JFrame implements ActionListener{
 	
 	private int numeroJugadores = 0;
+	private int seleccionCombo = 2;
 
 	private JPanel panel= new JPanel();
 	
@@ -54,16 +55,12 @@ public class Seleccion_no_jugadores extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		
 		if (source==siguiente) {
+			numeroJugadores=seleccionCombo;
 			dispose();
-			//panel.setVisible(false);
-			//setVisible(false);
-			
-			Seleccion_no_CPU seleccion2= new Seleccion_no_CPU(numeroJugadores);
-			seleccion2.setVisible(true);
 		}
 		
 		if (source==comboBox) {
-			numeroJugadores=(int)comboBox.getSelectedItem();
+			seleccionCombo=(int)comboBox.getSelectedItem();
 		}
 		
 		
@@ -73,8 +70,10 @@ public class Seleccion_no_jugadores extends JFrame implements ActionListener{
 		return numeroJugadores;
 	}
 	
+	/*
 	public static void main(String[] args) {
 		Seleccion_no_jugadores ventana = new Seleccion_no_jugadores();
 		ventana.setVisible(true);
 	}
+	*/
 }

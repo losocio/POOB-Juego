@@ -14,7 +14,8 @@ import java.util.Arrays;
 
 public class Seleccion_no_CPU extends JFrame implements ActionListener{
 	
-	private int numeroJugadoresVerdaderos = 1;
+	private int numeroJugadoresVerdaderos = 0;
+	private int seleccionCombo = 1;
 	
 	private JPanel panel= new JPanel();
 	
@@ -65,13 +66,14 @@ public class Seleccion_no_CPU extends JFrame implements ActionListener{
 		Object source = e.getSource();
 		
 		if (source==siguiente) {
+			numeroJugadoresVerdaderos=seleccionCombo;
 			dispose();
 			//panel.setVisible(false);
 			//setVisible(false);
 		}
 		
 		if (source==comboBox) {
-			numeroJugadoresVerdaderos=(int)comboBox.getSelectedItem();
+			seleccionCombo=(int)comboBox.getSelectedItem();
 		}
 		
 		
@@ -80,9 +82,10 @@ public class Seleccion_no_CPU extends JFrame implements ActionListener{
 	public int getNumeroJugadoresVerdaderos() {
 		return numeroJugadoresVerdaderos;
 	}
-	
+	 /*
 	public static void main(String[] args) {
 		Seleccion_no_CPU ventana = new Seleccion_no_CPU(8);
 		ventana.setVisible(true);
 	}
+	*/
 }
