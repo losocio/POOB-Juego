@@ -2,6 +2,8 @@ package mainJuego;
 
 import personajes.Personaje;
 import personajes.Seleccion_personaje;
+import armas.Arma;
+import armas.Seleccion_arma;
 
 public class Main {
 
@@ -24,6 +26,7 @@ public class Main {
 		int numerojugadoresVerdaderos = seleccion_no_CPU.getNumeroJugadoresVerdaderos();
 		
 		Personaje jugadoresVerdaderos[] = new Personaje[numerojugadoresVerdaderos];
+		Arma armasEquipadas[] = new Arma[numerojugadoresVerdaderos];
 		
 		int i = 0;
 		while(i < numerojugadoresVerdaderos) {
@@ -34,6 +37,14 @@ public class Main {
 				System.out.println("");
 			}
 			jugadoresVerdaderos[i] = seleccion_personaje.getJugador();
+			
+			Seleccion_arma seleccion_arma = new Seleccion_arma();
+			seleccion_arma.setVisible(true);
+			
+			while(seleccion_arma.getArma() == null) {
+				System.out.println("");
+			}
+			armasEquipadas[i] = seleccion_arma.getArma();
 			
 			i++;
 		}
