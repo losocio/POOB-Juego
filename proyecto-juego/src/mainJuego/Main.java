@@ -1,9 +1,7 @@
 package mainJuego;
 
-import personajes.Personaje;
-import personajes.Seleccion_personaje;
-import armas.Arma;
-import armas.Seleccion_arma;
+import personajes.*;
+import armas.*;
 
 public class Main {
 
@@ -56,7 +54,12 @@ public class Main {
 		
 		i = 0;
 		while(i < numeroJugadoresCPU) {
-			//jugadoresCPU[i]=
+			Generador_CPU generador_CPU = new Generador_CPU();
+			jugadoresCPU[i] = generador_CPU.getCPU();
+			
+			Generador_arma generador_arma = new Generador_arma();
+			armasEquipadasCPU[i] = generador_arma.getArmaCPU();
+			
 			i++;
 		}
 	}
