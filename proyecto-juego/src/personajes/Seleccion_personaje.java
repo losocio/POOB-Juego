@@ -11,11 +11,11 @@ import javax.swing.JLabel;
 
 public class Seleccion_personaje extends JFrame implements ActionListener {
 	
-	private JPanel caja= new JPanel(); //TODO anyadi private
+	private JPanel caja= new JPanel();
 	private JLabel dato[] = new JLabel[7];
 	private JButton boton[] = new JButton[14];
 	
-	private String personaje[] = {"Elemental","Elfo","Enano","Humano","Orco"};
+	private String raza[] = {"Elemental","Elfo","Enano","Humano","Orco"};
 	private String dificultad[] = {"Facil","Normal","Dificil"};
 	
 	private int dif=0;
@@ -80,7 +80,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 		add(caja);
 		
 		dato[0].setText(dificultad[0]);
-		dato[1].setText(personaje[0]);
+		dato[1].setText(raza[0]);
 		dato[2].setText("7");
 		dato[3].setText("19");
 		dato[4].setText("7");
@@ -187,21 +187,26 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				
 			case "Siguiente":
 				if((estadisticas-vida-ataque-defensa-velocidad) == 0) {
-					switch(personaje[raz]) {
+					switch(raza[raz]) {
 						case "Elemental":
 							jugador = new Elemental(vida_total, ataque_total, defensa_total, velocidad_total);
-									
+							break;
+							
 						case "Elfo":
 							jugador = new Elfo(vida_total, ataque_total, defensa_total, velocidad_total);
+							break;
 							
 						case "Enano":
 							jugador = new Enano(vida_total, ataque_total, defensa_total, velocidad_total);
+							break;
 							
 						case "Humano":
 							jugador = new Humano(vida_total, ataque_total, defensa_total, velocidad_total);
-	
+							break;
+							
 						case "Orco":
 							jugador = new Orco(vida_total, ataque_total, defensa_total, velocidad_total);
+							break;
 					}
 					
 					dispose();
@@ -209,7 +214,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				break;
 		}
 		
-		switch(personaje[raz]) {
+		switch(raza[raz]) {
 			case "Elemental":
 				vida_base=7;
 				ataque_base=19;
@@ -269,7 +274,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 		estadisticas_total=estadisticas-vida-ataque-defensa-velocidad;
 		
 		dato[0].setText(dificultad[dif]);
-		dato[1].setText(personaje[raz]);
+		dato[1].setText(raza[raz]);
 		dato[2].setText(vida_total+"");
 		dato[3].setText(ataque_total+"");
 		dato[4].setText(defensa_total+"");
@@ -282,7 +287,7 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 	}
 	/*
 	public String getRaza() {
-		return personaje[raz];
+		return raza[raz];
 	}
 
 	public int getVida_total() {

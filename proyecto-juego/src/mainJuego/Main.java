@@ -8,7 +8,6 @@ import armas.Seleccion_arma;
 public class Main {
 
 	public static void main(String[] args) {
-		
 		Seleccion_no_jugadores seleccion_no_jugadores= new Seleccion_no_jugadores();
 		seleccion_no_jugadores.setVisible(true);
 		
@@ -16,20 +15,22 @@ public class Main {
 			System.out.println("");
 		}
 		
-		Seleccion_no_CPU seleccion_no_CPU= new Seleccion_no_CPU(seleccion_no_jugadores.getNumeroJugadores());
+		int numeroJugadores = seleccion_no_jugadores.getNumeroJugadores();
+		
+		Seleccion_no_CPU seleccion_no_CPU= new Seleccion_no_CPU(numeroJugadores);
 		seleccion_no_CPU.setVisible(true);
 		
 		while(seleccion_no_CPU.getNumeroJugadoresVerdaderos() == 0) {
 			System.out.println("");
 		}
 		
-		int numerojugadoresVerdaderos = seleccion_no_CPU.getNumeroJugadoresVerdaderos();
+		int numeroJugadoresVerdaderos = seleccion_no_CPU.getNumeroJugadoresVerdaderos();
 		
-		Personaje jugadoresVerdaderos[] = new Personaje[numerojugadoresVerdaderos];
-		Arma armasEquipadas[] = new Arma[numerojugadoresVerdaderos];
+		Personaje jugadoresVerdaderos[] = new Personaje[numeroJugadoresVerdaderos];
+		Arma armasEquipadasVerdaderos[] = new Arma[numeroJugadoresVerdaderos];
 		
 		int i = 0;
-		while(i < numerojugadoresVerdaderos) {
+		while(i < numeroJugadoresVerdaderos) {
 			Seleccion_personaje seleccion_personaje = new Seleccion_personaje();
 			seleccion_personaje.setVisible(true);
 			
@@ -44,8 +45,18 @@ public class Main {
 			while(seleccion_arma.getArma() == null) {
 				System.out.println("");
 			}
-			armasEquipadas[i] = seleccion_arma.getArma();
+			armasEquipadasVerdaderos[i] = seleccion_arma.getArma();
 			
+			i++;
+		}
+		
+		int numeroJugadoresCPU = numeroJugadores - numeroJugadoresVerdaderos;
+		Personaje jugadoresCPU[] = new Personaje[numeroJugadoresCPU];
+		Arma armasEquipadasCPU[] = new Arma[numeroJugadoresCPU];
+		
+		i = 0;
+		while(i < numeroJugadoresCPU) {
+			//jugadoresCPU[i]=
 			i++;
 		}
 	}
