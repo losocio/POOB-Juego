@@ -2,6 +2,7 @@ package mainJuego;
 
 import personajes.*;
 import armas.*;
+import java.util.Arrays; 
 
 public class Main {
 
@@ -25,10 +26,9 @@ public class Main {
 		int numeroJugadoresVerdaderos = seleccion_no_CPU.getNumeroJugadoresVerdaderos();
 		
 		Personaje jugadoresVerdaderos[] = new Personaje[numeroJugadoresVerdaderos];
-		Arma armasEquipadasVerdaderos[] = new Arma[numeroJugadoresVerdaderos];
+		Arma armasVerdaderos[] = new Arma[numeroJugadoresVerdaderos];
 		
 		int i = 0;
-		int ID = 0;
 		while(i < numeroJugadoresVerdaderos) {
 			Seleccion_personaje seleccion_personaje = new Seleccion_personaje();
 			seleccion_personaje.setVisible(true);
@@ -37,7 +37,6 @@ public class Main {
 				System.out.println("");
 			}
 			jugadoresVerdaderos[i] = seleccion_personaje.getJugador();
-			jugadoresVerdaderos[i].setID(ID);
 			
 			Seleccion_arma seleccion_arma = new Seleccion_arma();
 			seleccion_arma.setVisible(true);
@@ -45,30 +44,41 @@ public class Main {
 			while(seleccion_arma.getArma() == null) {
 				System.out.println("");
 			}
-			armasEquipadasVerdaderos[i] = seleccion_arma.getArma();
-			armasEquipadasVerdaderos[i].setID(ID);
+			armasVerdaderos[i] = seleccion_arma.getArma();
 			
-			ID++;
 			i++;
 		}
 		
 		int numeroJugadoresCPU = numeroJugadores - numeroJugadoresVerdaderos;
 		Personaje jugadoresCPU[] = new Personaje[numeroJugadoresCPU];
-		Arma armasEquipadasCPU[] = new Arma[numeroJugadoresCPU];
+		Arma armasCPU[] = new Arma[numeroJugadoresCPU];
 		
 		i = 0;
 		while(i < numeroJugadoresCPU) {
 			Generador_CPU generador_CPU = new Generador_CPU();
 			jugadoresCPU[i] = generador_CPU.getCPU();
-			jugadoresCPU[i].setID(ID);
 			
 			Generador_arma generador_arma = new Generador_arma();
-			armasEquipadasCPU[i] = generador_arma.getArmaCPU();
-			armasEquipadasCPU[i].setID(ID);
+			armasCPU[i] = generador_arma.getArmaCPU();
 			
-			ID++;
 			i++;
 		}
+		
+		Personaje jugadores[] = new Personaje[numeroJugadores];
+		System.arraycopy(jugadoresVerdaderos, 0, jugadores, 0, numeroJugadoresVerdaderos);  
+		System.arraycopy(jugadoresCPU, 0, jugadores, numeroJugadoresVerdaderos, numeroJugadoresCPU);
+		
+		Arma armas[] = new Arma[numeroJugadores];
+		System.arraycopy(armasVerdaderos, 0, armas, 0, numeroJugadoresVerdaderos);  
+		System.arraycopy(armasCPU, 0, armas, numeroJugadoresVerdaderos, numeroJugadoresCPU);
+		
+		//while rondas
+			Emparejador emparejador = new Emparejador(jugadores);
+			Personaje[][] emparejamientos = emparejador.getOponentes();
+			for(int i = 0; i < numeroJugadores; i++) {
+				Batalla batalla = new Batalla();
+			}
+		
 	}
 
 }
