@@ -28,7 +28,7 @@ public class Generador_CPU {
 				ataque_total=ataque + 19;
 				defensa_total=defensa + 7;
 				velocidad_total=velocidad + 7;
-				CPU = new Elemental(vida_total, ataque_total, defensa_total, velocidad_total);
+				CPU = new Elemental(vida_total, ataque_total, defensa_total, velocidad_total, true);
 				break;
 				
 			case "Elfo":
@@ -36,7 +36,7 @@ public class Generador_CPU {
 				ataque_total=ataque + 7;
 				defensa_total=defensa + 7;
 				velocidad_total=velocidad + 19;
-				CPU = new Elfo(vida_total, ataque_total, defensa_total, velocidad_total);
+				CPU = new Elfo(vida_total, ataque_total, defensa_total, velocidad_total, true);
 				break;
 				
 			case "Enano":
@@ -44,7 +44,7 @@ public class Generador_CPU {
 				ataque_total=ataque + 7;
 				defensa_total=defensa + 19;
 				velocidad_total=velocidad + 7;
-				CPU = new Enano(vida_total, ataque_total, defensa_total, velocidad_total);
+				CPU = new Enano(vida_total, ataque_total, defensa_total, velocidad_total, true);
 				break;
 				
 			case "Humano":
@@ -52,7 +52,7 @@ public class Generador_CPU {
 				ataque_total=ataque + 10;
 				defensa_total=defensa + 10;
 				velocidad_total=velocidad + 10;
-				CPU = new Humano(vida_total, ataque_total, defensa_total, velocidad_total);
+				CPU = new Humano(vida_total, ataque_total, defensa_total, velocidad_total, true);
 				break;
 				
 			case "Orco":
@@ -60,7 +60,7 @@ public class Generador_CPU {
 				ataque_total=ataque + 7;
 				defensa_total=defensa + 7;
 				velocidad_total=velocidad + 7;
-				CPU = new Orco(vida_total, ataque_total, defensa_total, velocidad_total);
+				CPU = new Orco(vida_total, ataque_total, defensa_total, velocidad_total, true);
 				break;
 		}
 		

@@ -7,13 +7,15 @@ public abstract class Personaje {
 	private int defensa;
 	private int velocidad;
 	private String raza;
+	private boolean isCPU;
 	
-	public Personaje(String raza, int vida, int ataque, int defensa, int velocidad) {
+	public Personaje(String raza, int vida, int ataque, int defensa, int velocidad, boolean isCPU) {
 		this.raza=raza;
 		this.vida=vida;
 		this.ataque=ataque;
 		this.defensa=defensa;
 		this.velocidad=velocidad;
+		this.isCPU=isCPU;
 	}
 	
 	public int getVida() {
@@ -34,6 +36,10 @@ public abstract class Personaje {
 	
 	public String getRaza() {
 		return raza;
+	}
+	
+	public boolean getIsCPU() {
+		return isCPU;
 	}
 	
 	/*

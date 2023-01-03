@@ -189,23 +189,23 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				if((estadisticas-vida-ataque-defensa-velocidad) == 0) {
 					switch(raza[raz]) {
 						case "Elemental":
-							jugador = new Elemental(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Elemental(vida_total, ataque_total, defensa_total, velocidad_total, false);
 							break;
 							
 						case "Elfo":
-							jugador = new Elfo(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Elfo(vida_total, ataque_total, defensa_total, velocidad_total, false);
 							break;
 							
 						case "Enano":
-							jugador = new Enano(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Enano(vida_total, ataque_total, defensa_total, velocidad_total, false);
 							break;
 							
 						case "Humano":
-							jugador = new Humano(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Humano(vida_total, ataque_total, defensa_total, velocidad_total, false);
 							break;
 							
 						case "Orco":
-							jugador = new Orco(vida_total, ataque_total, defensa_total, velocidad_total);
+							jugador = new Orco(vida_total, ataque_total, defensa_total, velocidad_total, false);
 							break;
 					}
 					
