@@ -28,6 +28,7 @@ public class Main {
 		Arma armasEquipadasVerdaderos[] = new Arma[numeroJugadoresVerdaderos];
 		
 		int i = 0;
+		int ID = 0;
 		while(i < numeroJugadoresVerdaderos) {
 			Seleccion_personaje seleccion_personaje = new Seleccion_personaje();
 			seleccion_personaje.setVisible(true);
@@ -36,6 +37,7 @@ public class Main {
 				System.out.println("");
 			}
 			jugadoresVerdaderos[i] = seleccion_personaje.getJugador();
+			jugadoresVerdaderos[i].setID(ID);
 			
 			Seleccion_arma seleccion_arma = new Seleccion_arma();
 			seleccion_arma.setVisible(true);
@@ -44,7 +46,9 @@ public class Main {
 				System.out.println("");
 			}
 			armasEquipadasVerdaderos[i] = seleccion_arma.getArma();
+			armasEquipadasVerdaderos[i].setID(ID);
 			
+			ID++;
 			i++;
 		}
 		
@@ -56,10 +60,13 @@ public class Main {
 		while(i < numeroJugadoresCPU) {
 			Generador_CPU generador_CPU = new Generador_CPU();
 			jugadoresCPU[i] = generador_CPU.getCPU();
+			jugadoresCPU[i].setID(ID);
 			
 			Generador_arma generador_arma = new Generador_arma();
 			armasEquipadasCPU[i] = generador_arma.getArmaCPU();
+			armasEquipadasCPU[i].setID(ID);
 			
+			ID++;
 			i++;
 		}
 	}

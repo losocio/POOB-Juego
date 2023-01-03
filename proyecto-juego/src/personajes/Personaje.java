@@ -1,13 +1,13 @@
 package personajes;
 
 public abstract class Personaje {
-
 	private int vida;
 	private int ataque;
 	private int defensa;
 	private int velocidad;
 	private String raza;
 	private boolean isCPU;
+	private int ID;
 	
 	public Personaje(String raza, int vida, int ataque, int defensa, int velocidad, boolean isCPU) {
 		this.raza=raza;
@@ -40,6 +40,14 @@ public abstract class Personaje {
 	
 	public boolean getIsCPU() {
 		return isCPU;
+	}
+	
+	public int getID() {
+		return ID;
+	}
+	
+	public void setID(int ID) {
+		this.ID = ID;
 	}
 	
 	/*
