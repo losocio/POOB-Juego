@@ -10,11 +10,9 @@ import java.util.Random;
 
 public class Batalla {
 
+	private Personaje ganador;
 	
-	
-	
-	
-	public void batalla(Personaje per1, Arma arm1, Personaje per2, Arma arm2, int x) {
+	public Batalla(Personaje per1, Arma arm1, Personaje per2, Arma arm2, int x) {
 		Scanner entrada = new Scanner(System.in);
 		int vida1=per1.getVida()*10;
 		int ataque1=per1.getAtaque()*2;
@@ -596,14 +594,17 @@ public class Batalla {
 				}
 				if(vida1<0 && vida2<0) {
 					System.out.printf("Empate\n");	
+					//TODO no puede haber empate
 					exit=1;
 				}else {
 					if(vida1<0) {
 						System.out.printf("Gana personaje 2\n");
+						ganador = per2;
 						exit=1;
 					}
 					if(vida2<0) {
 						System.out.printf("Gana personaje 1\n");	
+						ganador = per1;
 						exit=1;
 					}
 				}
@@ -617,4 +618,7 @@ public class Batalla {
 		return random.nextInt((max - min) + 1) + min;
 	}
 	
+	public Personaje getGanador() {
+		return ganador;
+	}
 }

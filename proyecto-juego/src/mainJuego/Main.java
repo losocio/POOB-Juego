@@ -29,6 +29,7 @@ public class Main {
 		Arma armasVerdaderos[] = new Arma[numeroJugadoresVerdaderos];
 		
 		int i = 0;
+		int ID =0;
 		while(i < numeroJugadoresVerdaderos) {
 			Seleccion_personaje seleccion_personaje = new Seleccion_personaje();
 			seleccion_personaje.setVisible(true);
@@ -37,6 +38,7 @@ public class Main {
 				System.out.println("");
 			}
 			jugadoresVerdaderos[i] = seleccion_personaje.getJugador();
+			jugadoresVerdaderos[i].setID(ID);
 			
 			Seleccion_arma seleccion_arma = new Seleccion_arma();
 			seleccion_arma.setVisible(true);
@@ -46,6 +48,7 @@ public class Main {
 			}
 			armasVerdaderos[i] = seleccion_arma.getArma();
 			
+			ID++;
 			i++;
 		}
 		
@@ -57,10 +60,12 @@ public class Main {
 		while(i < numeroJugadoresCPU) {
 			Generador_CPU generador_CPU = new Generador_CPU();
 			jugadoresCPU[i] = generador_CPU.getCPU();
+			jugadoresCPU[i].setID(ID);
 			
 			Generador_arma generador_arma = new Generador_arma();
 			armasCPU[i] = generador_arma.getArmaCPU();
 			
+			ID++;
 			i++;
 		}
 		
@@ -72,13 +77,44 @@ public class Main {
 		System.arraycopy(armasVerdaderos, 0, armas, 0, numeroJugadoresVerdaderos);  
 		System.arraycopy(armasCPU, 0, armas, numeroJugadoresVerdaderos, numeroJugadoresCPU);
 		
-		//while rondas
+		int rondas=0;
+		//int redimensionar=0;
+		switch(numeroJugadores) {
+		case 32:
+			rondas=5;
+			//redimensionar=16;
+			break;
+		case 16:
+			rondas=4;
+			//redimensionar=8;
+			break;
+		case 8:
+			rondas=3;
+			//redimensionar=4;
+			break;
+		case 4:
+			rondas=2;
+			//redimensionar=2;
+			break;
+		case 2:
+			rondas=1;
+			//redimensionar=1;
+			break;
+		}
+		
+		while(rondas>0) {
 			Emparejador emparejador = new Emparejador(jugadores);
 			Personaje[][] emparejamientos = emparejador.getOponentes();
-			for(int i = 0; i < numeroJugadores; i++) {
-				Batalla batalla = new Batalla();
+			jugadores = new Personaje[emparejamientos[0].length]; //TODO creo que esto esta bien. Sino usar redimensionar 
+			//Cada vez se divide /2
+			for(int j = 0; j < numeroJugadores; j++) {
+				Batalla batalla = new Batalla(emparejamientos[0][j], armas[emparejamientos[0][j].getID()], emparejamientos[1][j], armas[emparejamientos[1][j].getID()], 1);
+				jugadores[j]=batalla.getGanador();
 			}
+		rondas--;
+		}
 		
+		//TODO ganador=jugadores[0];
 	}
 
 }
