@@ -102,16 +102,18 @@ public class Main {
 			break;
 		}
 		
+		int numeroJugadoresRondas = numeroJugadores/2;
 		while(rondas>0) {
 			Emparejador emparejador = new Emparejador(jugadores);
 			Personaje[][] emparejamientos = emparejador.getOponentes();
 			jugadores = new Personaje[emparejamientos[0].length]; //TODO creo que esto esta bien. Sino usar redimensionar 
 			//Cada vez se divide /2
-			for(int j = 0; j < numeroJugadores; j++) {
+			for(int j = 0; j < numeroJugadoresRondas; j++) { //TODO numeroJugadores no es correcto
 				Batalla batalla = new Batalla(emparejamientos[0][j], armas[emparejamientos[0][j].getID()], emparejamientos[1][j], armas[emparejamientos[1][j].getID()], 1);
 				jugadores[j]=batalla.getGanador();
 			}
-		rondas--;
+			numeroJugadoresRondas = numeroJugadoresRondas/2;
+			rondas--;
 		}
 		
 		System.out.println("El ganador es el jugador " + jugadores[0].getID());
