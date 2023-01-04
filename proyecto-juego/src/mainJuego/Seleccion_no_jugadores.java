@@ -69,11 +69,4 @@ public class Seleccion_no_jugadores extends JFrame implements ActionListener{
 	public int getNumeroJugadores() {
 		return numeroJugadores;
 	}
-	
-	/*
-	public static void main(String[] args) {
-		Seleccion_no_jugadores ventana = new Seleccion_no_jugadores();
-		ventana.setVisible(true);
-	}
-	*/
 }

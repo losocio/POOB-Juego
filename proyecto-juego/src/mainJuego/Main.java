@@ -16,14 +16,14 @@ public class Main {
 		
 		int numeroJugadores = seleccion_no_jugadores.getNumeroJugadores();
 		
-		Seleccion_no_CPU seleccion_no_CPU= new Seleccion_no_CPU(numeroJugadores);
-		seleccion_no_CPU.setVisible(true);
+		Seleccion_no_verdaderos seleccion_no_verdaderos= new Seleccion_no_verdaderos(numeroJugadores);
+		seleccion_no_verdaderos.setVisible(true);
 		
-		while(seleccion_no_CPU.getNumeroJugadoresVerdaderos() == 0) {
+		while(seleccion_no_verdaderos.getNumeroJugadoresVerdaderos() == 0) {
 			System.out.println("");
 		}
 		
-		int numeroJugadoresVerdaderos = seleccion_no_CPU.getNumeroJugadoresVerdaderos();
+		int numeroJugadoresVerdaderos = seleccion_no_verdaderos.getNumeroJugadoresVerdaderos();
 		
 		Personaje jugadoresVerdaderos[] = new Personaje[numeroJugadoresVerdaderos];
 		Arma armasVerdaderos[] = new Arma[numeroJugadoresVerdaderos];

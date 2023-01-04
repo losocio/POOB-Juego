@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
 
 import java.util.Arrays;
 
-public class Seleccion_no_CPU extends JFrame implements ActionListener{
+public class Seleccion_no_verdaderos extends JFrame implements ActionListener{
 	
 	private int numeroJugadoresVerdaderos = 0;
 	private int seleccionCombo = 1;
@@ -26,7 +26,7 @@ public class Seleccion_no_CPU extends JFrame implements ActionListener{
 	
 	private JButton siguiente;
 	
-	public Seleccion_no_CPU(int jugadoresTotales) {
+	public Seleccion_no_verdaderos(int jugadoresTotales) {
 		setSize(500,300);
 		setLocation(500,250);
 		setTitle("Numero de jugadores verdaderos");
@@ -82,10 +82,4 @@ public class Seleccion_no_CPU extends JFrame implements ActionListener{
 	public int getNumeroJugadoresVerdaderos() {
 		return numeroJugadoresVerdaderos;
 	}
-	 /*
-	public static void main(String[] args) {
-		Seleccion_no_CPU ventana = new Seleccion_no_CPU(8);
-		ventana.setVisible(true);
-	}
-	*/
 }

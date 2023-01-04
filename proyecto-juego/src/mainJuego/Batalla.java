@@ -348,10 +348,12 @@ public class Batalla {
 				}
 				if(vida1<0) {
 					System.out.printf("Gana personaje 2\n");
+					ganador = per2;
 					exit=1;
 				}
 				if(vida2<0) {
 					System.out.printf("Gana personaje 1\n");	
+					ganador = per1;
 					exit=1;
 				}
 			}
