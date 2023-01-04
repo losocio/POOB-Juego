@@ -12,7 +12,7 @@ public class Batalla {
 
 	private Personaje ganador;
 	
-	public Batalla(Personaje per1, Arma arm1, Personaje per2, Arma arm2, int x) {
+	public Batalla(Personaje per1, Arma arm1, Personaje per2, Arma arm2) {
 		Scanner entrada = new Scanner(System.in);
 		int vida1=per1.getVida()*10;
 		int ataque1=per1.getAtaque()*2;
