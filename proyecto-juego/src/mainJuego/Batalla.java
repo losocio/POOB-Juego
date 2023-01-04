@@ -88,143 +88,90 @@ public class Batalla {
 			break;
 		}
 		
-		if(x==2) {
-			while(exit!=1) {
-				if(resistencia1==-2) resistencia1--;
-				if(resistencia2==-2) resistencia2--;
-				System.out.printf("Vida personaje 1:%d\n",vida1);
-				System.out.printf("Vida personaje 2:%d\n",vida2);
-				if(velocidad1>=velocidad2) {
-					System.out.printf("Turno personaje 1\n");
-					System.out.printf("resistencia:%d\n",resistencia1);
+
+		while(exit!=1) {
+			if(resistencia1==-2) resistencia1--;
+			if(resistencia2==-2) resistencia2--;
+			System.out.printf("Vida personaje 1:%d\n",vida1);
+			System.out.printf("Vida personaje 2:%d\n",vida2);
+			if(velocidad1>=velocidad2) {
+				System.out.printf("Turno personaje 1\n");
+				System.out.printf("resistencia:%d\n",resistencia1);
+				if(per1.getIsCPU()) {
+					respuesta = getRandom(1, 3);
+				}else {
 					System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
 					respuesta = entrada.nextInt();
-					pasar=0;
-					while(pasar==0) {
-						switch(respuesta) {
-						case 1:
-							System.out.printf("El personaje 1 ataca\n");
-							if (resistencia1<0) {
-								if(defender2==1) {
-									if(resistencia2<0) {
-										vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2))/-resistencia1);
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}else {
-										vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/2)/-resistencia1);
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}
-								}else {
-									vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/-resistencia1);
+				}
+				pasar=0;
+				while(pasar==0) {
+					switch(respuesta) {
+					case 1:
+						System.out.printf("El personaje 1 ataca\n");
+						if (resistencia1<0) {
+							if(defender2==1) {
+								if(resistencia2<0) {
+									vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2))/-resistencia1);
 									resistencia1=resistencia1-2;
+									defender2=0;
+								}else {
+									vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/2)/-resistencia1);
+									resistencia1=resistencia1-2;
+									defender2=0;
 								}
 							}else {
-								if(defender2==1) {
-									if(resistencia2<0) {
-										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2));
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}else {
-										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/2);
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}
-								}else {
-									vida2=vida2-((ataque1*100-(ataque1*100/defensa2))/100);
+								vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/-resistencia1);
+								resistencia1=resistencia1-2;
+							}
+						}else {
+							if(defender2==1) {
+								if(resistencia2<0) {
+									vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2));
 									resistencia1=resistencia1-2;
-								}
-							}
-							pasar=1;
-							break;
-						case 2:
-							System.out.printf("El personaje 1 defiende\n");
-							defender1=1;
-							resistencia1--;
-							pasar=1;
-							break;
-						case 3:
-							System.out.printf("El personaje 1 descansa\n");
-							resistencia1=5;
-							pasar=1;
-							break;
-						default:
-							System.out.printf("Error al introducir elección\n");
-							break;
-						
-						}
-					}
-					System.out.printf("Vida personaje 1:%d\n",vida1);
-					System.out.printf("Vida personaje 2:%d\n",vida2);
-					if(vida2<0) {
-						morir=1;
-					}
-					if(morir==0) {
-						System.out.printf("Turno personaje 2\n");
-						System.out.printf("resistencia:%d\n",resistencia2);
-						System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
-						respuesta = entrada.nextInt();
-						pasar=0;
-						while(pasar==0) {
-							switch(respuesta) {
-							case 1:
-								System.out.printf("El personaje 2 ataca\n");
-								if (resistencia2<0) {
-									if(defender1==1) {
-										if(resistencia1<0) {
-											vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1))/-resistencia2);
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}else {
-											vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/2)/-resistencia2);
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}
-									}else {
-										vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/-resistencia2);
-										resistencia2=resistencia2-2;
-									}
+									defender2=0;
 								}else {
-									if(defender1==1) {
-										if(resistencia1<0) {
-											vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1));
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}else {
-											vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/2);
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}
-									}else {
-										vida1=vida1-((ataque2*100-(ataque2*100/defensa1))/100);
-										resistencia2=resistencia2-2;
-									}
+									vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/2);
+									resistencia1=resistencia1-2;
+									defender2=0;
 								}
-								pasar=1;
-								break;
-							case 2:
-								System.out.printf("El personaje 2 defiende\n");
-								defender2=1;
-								resistencia2--;
-								pasar=1;
-								break;
-							case 3:
-								System.out.printf("El personaje 2 descansa\n");
-								resistencia2=5;
-								pasar=1;
-								break;
-							default:
-								System.out.printf("Error al introducir elección\n");
-								break;
-							
+							}else {
+								vida2=vida2-((ataque1*100-(ataque1*100/defensa2))/100);
+								resistencia1=resistencia1-2;
 							}
 						}
+						pasar=1;
+						break;
+					case 2:
+						System.out.printf("El personaje 1 defiende\n");
+						defender1=1;
+						resistencia1--;
+						pasar=1;
+						break;
+					case 3:
+						System.out.printf("El personaje 1 descansa\n");
+						resistencia1=5;
+						pasar=1;
+						break;
+					default:
+						System.out.printf("Error al introducir elección\n");
+						break;
+					
 					}
-				}else {
+				}
+				System.out.printf("Vida personaje 1:%d\n",vida1);
+				System.out.printf("Vida personaje 2:%d\n",vida2);
+				if(vida2<0) {
+					morir=1;
+				}
+				if(morir==0) {
 					System.out.printf("Turno personaje 2\n");
 					System.out.printf("resistencia:%d\n",resistencia2);
-					System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
-					respuesta = entrada.nextInt();
+					if(per2.getIsCPU()) {
+						respuesta = getRandom(1, 3);
+					}else {
+						System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
+						respuesta = entrada.nextInt();
+					}
 					pasar=0;
 					while(pasar==0) {
 						switch(respuesta) {
@@ -277,354 +224,154 @@ public class Batalla {
 						default:
 							System.out.printf("Error al introducir elección\n");
 							break;
+						
 						}
 					}
-					System.out.printf("Vida personaje 1:%d\n",vida1);
-					System.out.printf("Vida personaje 2:%d\n",vida2);
-					if(vida1<0) {
-						morir=1;
-					}
-					if(morir!=1) {
-						System.out.printf("Turno personaje 1\n");
-						System.out.printf("resistencia:%d\n",resistencia1);
-						System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
-						respuesta = entrada.nextInt();
-						pasar=0;
-						while(pasar==0) {
-							switch(respuesta) {
-							case 1:
-								System.out.printf("El personaje 1 ataca\n");
-								if (resistencia1<0) {
-									if(defender2==1) {
-										if(resistencia2<0) {
-											vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2))/-resistencia1);
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}else {
-											vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/2)/-resistencia1);
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}
-									}else {
-										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/-resistencia1);
-										resistencia1=resistencia1-2;
-									}
+				}
+			}else {
+				System.out.printf("Turno personaje 2\n");
+				System.out.printf("resistencia:%d\n",resistencia2);
+				if(per2.getIsCPU()) {
+					respuesta = getRandom(1, 3);
+				}else {
+					System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
+					respuesta = entrada.nextInt();
+				}
+				pasar=0;
+				while(pasar==0) {
+					switch(respuesta) {
+					case 1:
+						System.out.printf("El personaje 2 ataca\n");
+						if (resistencia2<0) {
+							if(defender1==1) {
+								if(resistencia1<0) {
+									vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1))/-resistencia2);
+									resistencia2=resistencia2-2;
+									defender1=0;
 								}else {
-									if(defender2==1) {
-										if(resistencia2<0) {
-											vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2));
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}else {
-											vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/2);
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}
-									}else {
-										vida2=vida2-((ataque1*100-(ataque1*100/defensa2))/100);
-										resistencia1=resistencia1-2;
-									}
+									vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/2)/-resistencia2);
+									resistencia2=resistencia2-2;
+									defender1=0;
 								}
-								pasar=1;
-								break;
-							case 2:
-								System.out.printf("El personaje 1 defiende\n");
-								defender1=1;
-								resistencia1--;
-								pasar=1;
-								break;
-							case 3:
-								System.out.printf("El personaje descansa\n");
-								resistencia1=5;
-								pasar=1;
-								break;
-							default:
-								System.out.printf("Error al introducir elección\n");
-								break;
-							
+							}else {
+								vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/-resistencia2);
+								resistencia2=resistencia2-2;
+							}
+						}else {
+							if(defender1==1) {
+								if(resistencia1<0) {
+									vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1));
+									resistencia2=resistencia2-2;
+									defender1=0;
+								}else {
+									vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/2);
+									resistencia2=resistencia2-2;
+									defender1=0;
+								}
+							}else {
+								vida1=vida1-((ataque2*100-(ataque2*100/defensa1))/100);
+								resistencia2=resistencia2-2;
 							}
 						}
+						pasar=1;
+						break;
+					case 2:
+						System.out.printf("El personaje 2 defiende\n");
+						defender2=1;
+						resistencia2--;
+						pasar=1;
+						break;
+					case 3:
+						System.out.printf("El personaje 2 descansa\n");
+						resistencia2=5;
+						pasar=1;
+						break;
+					default:
+						System.out.printf("Error al introducir elección\n");
+						break;
 					}
 				}
+				System.out.printf("Vida personaje 1:%d\n",vida1);
+				System.out.printf("Vida personaje 2:%d\n",vida2);
 				if(vida1<0) {
-					System.out.printf("Gana personaje 2\n");
-					ganador = per2;
-					exit=1;
+					morir=1;
 				}
-				if(vida2<0) {
-					System.out.printf("Gana personaje 1\n");	
-					ganador = per1;
-					exit=1;
+				if(morir!=1) {
+					System.out.printf("Turno personaje 1\n");
+					System.out.printf("resistencia:%d\n",resistencia1);
+					if(per1.getIsCPU()) {
+						respuesta = getRandom(1, 3);
+					}else {
+						System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
+						respuesta = entrada.nextInt();
+					}
+					pasar=0;
+					while(pasar==0) {
+						switch(respuesta) {
+						case 1:
+							System.out.printf("El personaje 1 ataca\n");
+							if (resistencia1<0) {
+								if(defender2==1) {
+									if(resistencia2<0) {
+										vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2))/-resistencia1);
+										resistencia1=resistencia1-2;
+										defender2=0;
+									}else {
+										vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/2)/-resistencia1);
+										resistencia1=resistencia1-2;
+										defender2=0;
+									}
+								}else {
+									vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/-resistencia1);
+									resistencia1=resistencia1-2;
+								}
+							}else {
+								if(defender2==1) {
+									if(resistencia2<0) {
+										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2));
+										resistencia1=resistencia1-2;
+										defender2=0;
+									}else {
+										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/2);
+										resistencia1=resistencia1-2;
+										defender2=0;
+									}
+								}else {
+									vida2=vida2-((ataque1*100-(ataque1*100/defensa2))/100);
+									resistencia1=resistencia1-2;
+								}
+							}
+							pasar=1;
+							break;
+						case 2:
+							System.out.printf("El personaje 1 defiende\n");
+							defender1=1;
+							resistencia1--;
+							pasar=1;
+							break;
+						case 3:
+							System.out.printf("El personaje descansa\n");
+							resistencia1=5;
+							pasar=1;
+							break;
+						default:
+							System.out.printf("Error al introducir elección\n");
+							break;
+						
+						}
+					}
 				}
 			}
-		}
-		if(x==1) {
-			while(exit!=1) {
-				if(resistencia1==-2) resistencia1--;
-				if(resistencia2==-2) resistencia2--;
-				System.out.printf("Vida personaje 1:%d\n",vida1);
-				System.out.printf("Vida personaje 2:%d\n",vida2);
-				if(velocidad1>=velocidad2) {
-					System.out.printf("Turno personaje 1\n");
-					System.out.printf("resistencia:%d\n",resistencia1);
-					System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
-					respuesta = entrada.nextInt();
-					pasar=0;
-					while(pasar==0) {
-						switch(respuesta) {
-						case 1:
-							System.out.printf("El personaje 1 ataca\n");
-							if (resistencia1<0) {
-								if(defender2==1) {
-									if(resistencia2<0) {
-										vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2))/-resistencia1);
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}else {
-										vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/2)/-resistencia1);
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}
-								}else {
-									vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/-resistencia1);
-									resistencia1=resistencia1-2;
-								}
-							}else {
-								if(defender2==1) {
-									if(resistencia2<0) {
-										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2));
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}else {
-										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/2);
-										resistencia1=resistencia1-2;
-										defender2=0;
-									}
-								}else {
-									vida2=vida2-((ataque1*100-(ataque1*100/defensa2))/100);
-									resistencia1=resistencia1-2;
-								}
-							}
-							pasar=1;
-							break;
-						case 2:
-							System.out.printf("El personaje 1 defiende\n");
-							defender1=1;
-							resistencia1--;
-							pasar=1;
-							break;
-						case 3:
-							System.out.printf("El personaje 1 descansa\n");
-							resistencia1=5;
-							pasar=1;
-							break;
-						default:
-							System.out.printf("Error al introducir elección\n");
-							break;
-						
-						}
-					}
-					System.out.printf("Vida personaje 1:%d\n",vida1);
-					System.out.printf("Vida personaje 2:%d\n",vida2);
-					if(vida2<0) {
-						morir=1;
-					}
-					if(morir==0) {
-						System.out.printf("Turno personaje 2\n");
-						System.out.printf("resistencia:%d\n",resistencia2);
-						respuesta = getRandom(1, 3);
-						pasar=0;
-						while(pasar==0) {
-							switch(respuesta) {
-							case 1:
-								System.out.printf("El personaje 2 ataca\n");
-								if (resistencia2<0) {
-									if(defender1==1) {
-										if(resistencia1<0) {
-											vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1))/-resistencia2);
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}else {
-											vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/2)/-resistencia2);
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}
-									}else {
-										vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/-resistencia2);
-										resistencia2=resistencia2-2;
-									}
-								}else {
-									if(defender1==1) {
-										if(resistencia1<0) {
-											vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1));
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}else {
-											vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/2);
-											resistencia2=resistencia2-2;
-											defender1=0;
-										}
-									}else {
-										vida1=vida1-((ataque2*100-(ataque2*100/defensa1))/100);
-										resistencia2=resistencia2-2;
-									}
-								}
-								pasar=1;
-								break;
-							case 2:
-								System.out.printf("El personaje 2 defiende\n");
-								defender2=1;
-								resistencia2--;
-								pasar=1;
-								break;
-							case 3:
-								System.out.printf("El personaje 2 descansa\n");
-								resistencia2=5;
-								pasar=1;
-								break;
-							default:
-								System.out.printf("Error al introducir elección\n");
-								break;
-							
-							}
-						}
-					}
-				}else {
-					System.out.printf("Turno personaje 2\n");
-					System.out.printf("resistencia:%d\n",resistencia2);
-					respuesta = getRandom(1, 3);
-					pasar=0;
-					while(pasar==0) {
-						switch(respuesta) {
-						case 1:
-							System.out.printf("El personaje 2 ataca\n");
-							if (resistencia2<0) {
-								if(defender1==1) {
-									if(resistencia1<0) {
-										vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1))/-resistencia2);
-										resistencia2=resistencia2-2;
-										defender1=0;
-									}else {
-										vida1=vida1-((((ataque2*100-(ataque2*100/defensa1))/100)/2)/-resistencia2);
-										resistencia2=resistencia2-2;
-										defender1=0;
-									}
-								}else {
-									vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/-resistencia2);
-									resistencia2=resistencia2-2;
-								}
-							}else {
-								if(defender1==1) {
-									if(resistencia1<0) {
-										vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/(2/-resistencia1));
-										resistencia2=resistencia2-2;
-										defender1=0;
-									}else {
-										vida1=vida1-(((ataque2*100-(ataque2*100/defensa1))/100)/2);
-										resistencia2=resistencia2-2;
-										defender1=0;
-									}
-								}else {
-									vida1=vida1-((ataque2*100-(ataque2*100/defensa1))/100);
-									resistencia2=resistencia2-2;
-								}
-							}
-							pasar=1;
-							break;
-						case 2:
-							System.out.printf("El personaje 2 defiende\n");
-							defender2=1;
-							resistencia2--;
-							pasar=1;
-							break;
-						case 3:
-							System.out.printf("El personaje 2 descansa\n");
-							resistencia2=5;
-							pasar=1;
-							break;
-						default:
-							System.out.printf("Error al introducir elección\n");
-							break;
-						}
-					}
-					System.out.printf("Vida personaje 1:%d\n",vida1);
-					System.out.printf("Vida personaje 2:%d\n",vida2);
-					if(vida1<0) {
-						morir=1;
-					}
-					if(morir==1) {
-						System.out.printf("Turno personaje 1\n");
-						System.out.printf("resistencia:%d\n",resistencia1);
-						System.out.printf("1:Atacar  2:Defender  3:Descansar\n");
-						respuesta = entrada.nextInt();
-						pasar=0;
-						while(pasar==0) {
-							switch(respuesta) {
-							case 1:
-								System.out.printf("El personaje 1 ataca\n");
-								if (resistencia1<0) {
-									if(defender2==1) {
-										if(resistencia2<0) {
-											vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2))/-resistencia1);
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}else {
-											vida2=vida2-((((ataque1*100-(ataque1*100/defensa2))/100)/2)/-resistencia1);
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}
-									}else {
-										vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/-resistencia1);
-										resistencia1=resistencia1-2;
-									}
-								}else {
-									if(defender2==1) {
-										if(resistencia2<0) {
-											vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/(2/-resistencia2));
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}else {
-											vida2=vida2-(((ataque1*100-(ataque1*100/defensa2))/100)/2);
-											resistencia1=resistencia1-2;
-											defender2=0;
-										}
-									}else {
-										vida2=vida2-((ataque1*100-(ataque1*100/defensa2))/100);
-										resistencia1=resistencia1-2;
-									}
-								}
-								pasar=1;
-								break;
-							case 2:
-								System.out.printf("El personaje 1 defiende\n");
-								defender1=1;
-								resistencia1--;
-								pasar=1;
-								break;
-							case 3:
-								System.out.printf("El personaje descansa\n");
-								resistencia1=5;
-								pasar=1;
-								break;
-							default:
-								System.out.printf("Error al introducir elección\n");
-								break;
-							
-							}
-						}
-					}
-				}
-				if(vida1<0) {
-					System.out.printf("Gana personaje 2\n");
-					ganador = per2;
-					exit=1;
-				}
-				if(vida2<0) {
-					System.out.printf("Gana personaje 1\n");	
-					ganador = per1;
-					exit=1;
-				}
-			}	
+			if(vida1<0) {
+				System.out.printf("Gana personaje 2\n");
+				ganador = per2;
+				exit=1;
+			}
+			if(vida2<0) {
+				System.out.printf("Gana personaje 1\n");	
+				ganador = per1;
+				exit=1;
+			}
 		}
 		
 	}
