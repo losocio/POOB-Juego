@@ -114,7 +114,7 @@ public class Main {
 		rondas--;
 		}
 		
-		//TODO ganador=jugadores[0];
+		System.out.println("El ganador es el jugador " + jugadores[0].getID());
 	}
 
 }
