@@ -30,13 +30,10 @@ public class Seleccion_no_verdaderos extends JFrame implements ActionListener{
 		setSize(500,300);
 		setLocation(500,250);
 		setTitle("Numero de jugadores verdaderos");
-		//panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
 		panel.setLayout(new BorderLayout(65,65));
 		
 		texto= new JLabel("Seleccione el numero de jugadores verdaderos");
 		panel.add(texto, BorderLayout.NORTH);
-		
-		//panel.add(Box.createHorizontalStrut(1));
 		
 		for(int i = 2; i<=jugadoresTotales ;i++) {
 			jug = Arrays.copyOf(jug, jug.length + 1);
@@ -46,8 +43,6 @@ public class Seleccion_no_verdaderos extends JFrame implements ActionListener{
 		comboBox.setSelectedIndex(0);
 		comboBox.addActionListener(this);
 		panel.add(comboBox, BorderLayout.CENTER);
-		
-		//panel.add(Box.createHorizontalStrut(1));
 		
 		siguiente = new JButton("Siguiente");
 		siguiente.addActionListener(this);
@@ -68,8 +63,6 @@ public class Seleccion_no_verdaderos extends JFrame implements ActionListener{
 		if (source==siguiente) {
 			numeroJugadoresVerdaderos=seleccionCombo;
 			dispose();
-			//panel.setVisible(false);
-			//setVisible(false);
 		}
 		
 		if (source==comboBox) {

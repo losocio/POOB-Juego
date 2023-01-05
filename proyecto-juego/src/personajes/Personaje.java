@@ -49,26 +49,4 @@ public abstract class Personaje {
 	public void setID(int ID) {
 		this.ID = ID;
 	}
-	
-	/*
-	public void setVida(int vida) {
-		this.vida = vida;
-	}
-
-	public void setAtaque(int ataque) {
-		this.ataque = ataque;
-	}
-
-	public void setDefensa(int defensa) {
-		this.defensa = defensa;
-	}
-
-	public void setVelocidad(int velocidad) {
-		this.velocidad = velocidad;
-	}
-
-	public void setRaza(String raza) {
-		this.raza = raza;
-	}
-	*/
 }

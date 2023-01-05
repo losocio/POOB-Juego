@@ -265,8 +265,6 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 				break;
 		}
 		
-		//TODO puede que haya que poner el boton Siguiente aqui
-		
 		vida_total=vida_base+vida;
 		ataque_total=ataque_base+ataque;
 		defensa_total=defensa_base+defensa;
@@ -285,25 +283,4 @@ public class Seleccion_personaje extends JFrame implements ActionListener {
 	public Personaje getJugador() {
 		return jugador;
 	}
-	/*
-	public String getRaza() {
-		return raza[raz];
-	}
-
-	public int getVida_total() {
-		return vida_total;
-	}
-
-	public int getAtaque_total() {
-		return ataque_total;
-	}
-
-	public int getDefensa_total() {
-		return defensa_total;
-	}
-
-	public int getVelocidad_total() {
-		return velocidad_total;
-	}
-	*/
 }
